@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+:root {
+    --bg-color: #02040a;
+    --terminal-blue: #00f0ff;
+    --dark-blue: #001833;
+    --dim-blue: #0077ff;
+    --accent-glow: rgba(0, 240, 255, 0.25);
+    --card-bg: #050b14;
+    --border-blue: #0a274a;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--terminal-blue);
+    font-family: 'Share Tech Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efeito de scanline sutil de monitor CRT */
+body::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), linear-gradient(90deg, rgba(0, 100, 255, 0.02), rgba(0, 240, 255, 0.01), rgba(0, 50, 150, 0.02));
+    z-index: 999;
+    background-size: 100% 4px, 6px 100%;
+    pointer-events: none;
+}
+
+header.navbar {
+    background-color: rgba(5, 11, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--terminal-blue);
+    text-shadow: 0 0 10px var(--terminal-blue);
+    letter-spacing: 1px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    color: #4da6ff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.navbar a:hover {
+    color: var(--terminal-blue);
+    text-shadow: 0 0 10px var(--terminal-blue);
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background: radial-gradient(circle at center, var(--dark-blue) 0%, var(--bg-color) 75%);
+}
+
+.terminal-box {
+    background-color: var(--card-bg);
+    border: 1px solid var(--terminal-blue);
+    padding: 45px;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 0 35px var(--accent-glow);
+    text-align: left;
+    position: relative;
+}
+
+.terminal-box::after {
+    content: "● ● ●";
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 0.7rem;
+    color: var(--dim-blue);
+    letter-spacing: 4px;
+}
+
+.prompt {
+    color: #3399ff;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--terminal-blue);
+    margin-bottom: 12px;
+    text-shadow: 0 0 15px var(--terminal-blue);
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    color: #8ae9ff;
+    font-size: 1.15rem;
+    margin-bottom: 25px;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: #a3f3ff;
+}
+
+.hero-meta span {
+    background: var(--dark-blue);
+    padding: 6px 12px;
+    border: 1px solid var(--dim-blue);
+    border-radius: 4px;
+}
+
+.btn-matrix {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--terminal-blue);
+    border: 1px solid var(--terminal-blue);
+    padding: 12px 24px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 10px var(--accent-glow);
+    border-radius: 4px;
+}
+
+.btn-matrix:hover {
+    background-color: var(--terminal-blue);
+    color: var(--bg-color);
+    box-shadow: 0 0 25px var(--terminal-blue);
+    transform: translateY(-2px);
+}
+
+.section {
+    max-width: 850px;
+    margin: 70px auto;
+    padding: 0 20px;
+}
+
+.section h2 {
+    font-size: 1.6rem;
+    color: var(--terminal-blue);
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px var(--terminal-blue);
+    border-bottom: 1px dashed var(--dim-blue);
+    padding-bottom: 8px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-blue);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 119, 255, 0.08);
+}
+
+.card p {
+    color: #a3f3ff;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-blue);
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+}
+
+.project-card:hover {
+    border-color: var(--terminal-blue);
+    box-shadow: 0 0 25px var(--accent-glow);
+    transform: translateY(-3px);
+}
+
+.project-card h3 {
+    color: var(--terminal-blue);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.project-card p {
+    color: #a3f3ff;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.tech-tag {
+    display: inline-block;
+    background-color: var(--dark-blue);
+    color: var(--terminal-blue);
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border: 1px solid var(--dim-blue);
+    border-radius: 4px;
+    margin-right: 6px;
+    margin-top: 6px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.skill-item {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-blue);
+    padding: 18px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--terminal-blue);
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(0, 119, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.skill-item:hover {
+    border-color: var(--terminal-blue);
+    box-shadow: 0 0 20px var(--accent-glow);
+    background-color: var(--dark-blue);
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #3399ff;
+    border-top: 1px solid var(--border-blue);
+    font-size: 0.9rem;
+    margin-top: 80px;
+    background-color: var(--card-bg);
+}
